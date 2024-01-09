@@ -14,13 +14,13 @@ public class SheetController implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++) {
-                if (e.getSource() == cells[i][j]) {
-                    calculTextField.setText(cells[i][j].getText());
-                    cells[i][j].setBackground(Color.GREEN);
+        for (JTextArea[] cell : cells) {
+            for (JTextArea jTextArea : cell) {
+                if (e.getSource() == jTextArea) {
+                    calculTextField.setText(jTextArea.getText());
+                    jTextArea.setBackground(Color.GREEN);
                 } else {
-                    cells[i][j].setBackground(Color.WHITE);
+                    jTextArea.setBackground(Color.WHITE);
                 }
             }
         }
@@ -45,10 +45,10 @@ public class SheetController implements MouseListener, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == '\n') {
-            for (int i = 0; i < cells.length; i++) {
-                for (int j = 0; j < cells[i].length; j++) {
-                    if (cells[i][j].getBackground() == Color.GREEN) {
-                        cells[i][j].setText(calculTextField.getText());
+            for (JTextArea[] cell : cells) {
+                for (JTextArea jTextArea : cell) {
+                    if (jTextArea.getBackground() == Color.GREEN) {
+                        jTextArea.setText(calculTextField.getText());
                     }
                 }
             }
