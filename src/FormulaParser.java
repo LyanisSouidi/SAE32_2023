@@ -5,6 +5,7 @@ import java.util.Stack;
 
 /**
  * The <code>FormulaParser</code> class is used to parse the content of a cell.
+ * 
  * @version 1.0
  * @author Tom Moguljak
  * @author Hugo Dimitrijevic

@@ -2,6 +2,7 @@ import java.util.List;
 
 /**
  * The <code>AdditionTreeNode</code> class represents an addition node in the tree.
+ * 
  * @version 1.0
  * @author Tom Moguljak
  * @author Hugo Dimitrijevic
@@ -15,6 +16,7 @@ public class AdditionTreeNode extends TreeNode {
 
     /**
      * Constructor of the class.
+     * 
      * @param childs the childs of the node, must contain 2 childs.
      */
     public AdditionTreeNode(List<TreeNode> childs) {
@@ -26,6 +28,7 @@ public class AdditionTreeNode extends TreeNode {
 
     /**
      * Get the child(s) of the node.
+     * 
      * @return a list of child(s).
      */
     @Override
@@ -35,6 +38,7 @@ public class AdditionTreeNode extends TreeNode {
 
     /**
      * Evaluate the node.
+     * 
      * @return the result of the evaluation.
      * @throws IncalculableFormulaException if the formula is incalculable.
      */

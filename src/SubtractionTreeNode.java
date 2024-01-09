@@ -2,6 +2,7 @@ import java.util.List;
 
 /**
  * The <code>SubtractionTreeNode</code> class represents a subtraction node in the tree.
+ * 
  * @version 1.0
  * @author Tom Moguljak
  * @author Hugo Dimitrijevic

@@ -2,6 +2,7 @@ import java.util.List;
 
 /**
  * The <code>TreeNode</code> abstract class represents a node in the tree.
+ * 
  * @version 1.0
  * @author Tom Moguljak
  * @author Hugo Dimitrijevic

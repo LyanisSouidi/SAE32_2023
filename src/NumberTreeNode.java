@@ -3,6 +3,7 @@ import java.util.List;
 
 /**
  * The <code>NumberTreeNode</code> class represents a Number node in the tree.
+ * 
  * @version 1.0
  * @author Tom Moguljak
  * @author Hugo Dimitrijevic

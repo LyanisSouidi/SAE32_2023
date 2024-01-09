@@ -3,6 +3,7 @@ import java.util.List;
 
 /**
  * The <code>Cell</code> class represents a cell in a worksheet.
+ * 
  * @version 1.0
  * @author Tom Moguljak
  * @author Hugo Dimitrijevic
@@ -40,7 +41,13 @@ public class Cell {
     private List<Cell> dependencies;
 
     /**
+     * The view of the cell.
+     */
+    private CellView view;
+
+    /**
      * Constructor of the class.
+     * 
      * @param location the location of the cell in the worksheet.
      */
     public Cell(Worksheet worksheet, String location) {
@@ -50,10 +57,12 @@ public class Cell {
         this.rootNode = null;
         this.formulaIsCorrect = true;
         this.dependencies = new ArrayList<Cell>();
+        this.view = null;
     }
 
     /**
      * Set the content of the cell.
+     * 
      * @param rawContent the content of the cell.
      */
     public void setRawContent(String rawContent) {
@@ -81,17 +90,21 @@ public class Cell {
 
     /**
      * Check if the cell depends on another cell.
+     * 
      * @param cell the cell to check.
      * @return true if the cell depends on the other cell, false otherwise.
      */
     public boolean dependsOn(Cell cell) {
-        if (this.dependencies.contains(cell)) return true;
+        if (this.dependencies.contains(cell))
+            return true;
         if (this != cell) {
-            if (this.dependsOn(this)) return true;
+            if (this.dependsOn(this))
+                return true;
         }
 
         for (Cell dependency : this.dependencies) {
-            if (dependency.dependsOn(cell)) return true;
+            if (dependency.dependsOn(cell))
+                return true;
         }
 
         return false;
@@ -99,6 +112,7 @@ public class Cell {
 
     /**
      * Get the worksheet of the cell.
+     * 
      * @return the worksheet of the cell.
      */
     public Worksheet getWorksheet() {
@@ -107,11 +121,14 @@ public class Cell {
 
     /**
      * Get the cell displayed value.
+     * 
      * @return the cell displayed value.
      */
     public String evaluate() {
-        if (this.rawContent.isBlank()) return "";
-        if (this.dependsOn(this)) return "#CREF!";
+        if (this.rawContent.isBlank())
+            return "";
+        if (this.dependsOn(this))
+            return "#CREF!";
         try {
             return String.valueOf(this.toDouble());
         } catch (IncalculableFormulaException e) {
@@ -123,6 +140,7 @@ public class Cell {
 
     /**
      * Get the content of the cell as a String.
+     * 
      * @return the content of the cell.
      */
     @Override
@@ -132,19 +150,31 @@ public class Cell {
 
     /**
      * Get the content of the cell as a double.
+     * 
      * @return the content of the cell.
      * @throws IncalculableFormulaException if the formula is incalculable.
-     * @throws IncorrectFormulaException if the formula is incorrect.
+     * @throws IncorrectFormulaException    if the formula is incorrect.
      */
     public double toDouble() throws IncalculableFormulaException, IncorrectFormulaException {
         if (!this.formulaIsCorrect) {
             throw new IncorrectFormulaException("The formula of the " + this.location + " is incorrect.");
         }
 
-        if (this.dependsOn(this)) throw new IncalculableFormulaException("Circular reference detected");
+        if (this.dependsOn(this))
+            throw new IncalculableFormulaException("Circular reference detected");
 
-        if (this.rootNode == null) return 0.0;
+        if (this.rootNode == null)
+            return 0.0;
 
         return rootNode.evaluate();
+    }
+
+    /**
+     * Set the view of the cell.
+     * 
+     * @param view the view of the cell.
+     */
+    public void setView(CellView view) {
+        this.view = view;
     }
 }
