@@ -21,10 +21,19 @@ public class Worksheet {
         this.cellsMap = new HashMap<String, Cell>();
         for (int i = 1; i < 10; i++) {
             for (int j = 1; j < 10; j++) {
-                String location = String.valueOf((char)(i + 64)) + j;
+                String location = String.valueOf((char)(j + 64)) + i;
                 this.cellsMap.put(location, new Cell(this, location));
             }
         }
+    }
+
+    /**
+     * Get the cells of the worksheet.
+     * 
+     * @return the cells of the worksheet.
+     */
+    public Map<String, Cell> getCells() {
+        return this.cellsMap;
     }
 
     /**

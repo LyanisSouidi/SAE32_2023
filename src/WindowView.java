@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Window extends JFrame {
-    public Window() {
+public class WindowView extends JFrame {
+    public WindowView(JTextField calcul) {
         super();
         this.setTitle("SAE 32_2023");
         this.setSize(1500, 800);
@@ -10,7 +10,6 @@ public class Window extends JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JTextField calcul = new JTextField();
         calcul.setPreferredSize(new Dimension(1000, 40));
         calcul.setFont(new Font("Arial", Font.BOLD, 15));
 
@@ -21,8 +20,6 @@ public class Window extends JFrame {
         calculPanel.add(calculLabel);
         calculPanel.add(calcul);
         this.add(calculPanel, BorderLayout.NORTH);
-
-        this.add(new WorksheetView(), BorderLayout.CENTER);
     }
 
 }

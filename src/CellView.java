@@ -1,4 +1,7 @@
+import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  * The <code>CellView</code> class represents the view of a cell in a worksheet.
@@ -15,8 +18,6 @@ public class CellView extends JTextArea {
      */
     private Cell cell;
 
-    private CellView[][] cellsTab;
-
     /**
      * Constructor of the class.
      * 
@@ -26,13 +27,25 @@ public class CellView extends JTextArea {
         super(cell.evaluate());
         this.cell = cell;
         this.cell.setView(this);
-        this.cellsTab = new CellView[9][9];
+
+        this.setEditable(false);
+        this.setFont(new Font("Arial", Font.BOLD, 15));
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     /**
      * Update the view of the cell.
      */
     public void update() {
-        this.setText(this.cell.evaluate());
+        String text = this.cell.evaluate();
+        this.setText(text);
+
+        if (text.startsWith("#") && text.endsWith("!")) {
+            this.setForeground(Color.WHITE);
+            this.setBackground(Color.RED);
+        } else {
+            this.setForeground(Color.BLACK);
+            this.setBackground(Color.WHITE);
+        }
     }
 }

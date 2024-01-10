@@ -1,21 +1,22 @@
 import java.awt.*;
+import java.util.Map;
+
 import javax.swing.*;
 
 public class WorksheetView extends JPanel {
-    private CellView[][] cells;
+    private Map<String, CellController> cellsControllersMap;
 
-    public WorksheetView() {
+    public WorksheetView(Map<String, CellController> cellsControllersMap) {
         super(new BorderLayout());
+        this.cellsControllersMap = cellsControllersMap;
 
-    
         JPanel gridPanel = new JPanel(new GridLayout(9, 9));
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                cells[i][j] = new CellView();
-                cells[i][j].setEditable(false);
-                cells[i][j].setFont(new Font("Arial", Font.BOLD, 15));
-                cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                gridPanel.add(cells[i][j]);
+
+        for (int i = 1; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
+                String location = String.valueOf((char) (j + 64)) + i;
+                CellView cellView = this.cellsControllersMap.get(location).getView();
+                gridPanel.add(cellView);
             }
         }
 
