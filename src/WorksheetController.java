@@ -1,13 +1,12 @@
 import java.awt.BorderLayout;
 import java.util.*;
-import javax.swing.*;
 
 public class WorksheetController {
     private WorksheetView view;
     private Worksheet model;
     private Map<String,CellController> cellsControllersMap;
 
-    public WorksheetController(WindowController windowController,WindowView windowView, Worksheet model) {
+    public WorksheetController(WindowController windowController, WindowView windowView, Worksheet model) {
         this.model = model;
 
         Map<String,Cell> cellsMap = this.model.getCells();

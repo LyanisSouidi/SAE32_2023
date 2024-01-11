@@ -1,7 +1,5 @@
-import java.awt.Color;
 import java.awt.event.*;
 import java.util.*;
-import javax.swing.*;
 
 public class CellController extends Observable implements MouseListener {
     private CellView view;

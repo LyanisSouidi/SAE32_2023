@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.util.Map;
-
 import javax.swing.*;
 
 public class WorksheetView extends JPanel {

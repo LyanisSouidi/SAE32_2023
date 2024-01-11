@@ -68,7 +68,7 @@ public class Cell {
     public void setRawContent(String rawContent) {
         this.rawContent = rawContent;
         try {
-            this.rootNode = FormulaParser.parse(this, rawContent);
+            this.rootNode = FormulaParser.parse(this.getWorksheet(), rawContent);
             this.formulaIsCorrect = true;
             this.dependencies.clear();
 

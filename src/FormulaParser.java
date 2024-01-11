@@ -12,7 +12,7 @@ import java.util.Stack;
  * @author Lyanis Souidi
  */
 public class FormulaParser {
-    public static TreeNode parse(Cell currentCell, String formula) throws IncorrectFormulaException {
+    public static TreeNode parse(Worksheet worksheetContext, String formula) throws IncorrectFormulaException {
         if (formula.isBlank()) return new NumberTreeNode(0);
 
         String[] splitedFormula = formula.split("\\s+");
@@ -67,7 +67,7 @@ public class FormulaParser {
                 stackTreeNodes.push(new DivisionTreeNode(childs));
             } else if (s.matches("^[A-I][1-9]$")) {
                 try {
-                    stackTreeNodes.push(new ReferenceTreeNode(currentCell.getWorksheet().get(s)));
+                    stackTreeNodes.push(new ReferenceTreeNode(worksheetContext.get(s)));
                 } catch (IllegalArgumentException e) {
                     throw new IncorrectFormulaException("Incorrect formula: " + e.toString());
                 }
