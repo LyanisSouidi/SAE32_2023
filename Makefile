@@ -23,7 +23,7 @@ clean:
 doc:
 	javadoc -d $(DOC_DIR) $(shell find $(SRC_DIR)/main -name "*.java") -cp $(CLASSPATH)
 
-.PHONY: build clean doc classfiles
+.PHONY: build clean doc
 
 ### RULES ###
 
@@ -44,7 +44,7 @@ $(BUILD_DIR)/$(MAIN_PKG)/WindowView.class: $(SRC_DIR)/$(MAIN_PKG)/WindowView.jav
 $(BUILD_DIR)/$(MAIN_PKG)/WorksheetController.class: $(SRC_DIR)/$(MAIN_PKG)/WorksheetController.java $(BUILD_DIR)/$(MAIN_PKG)/WorksheetView.class $(BUILD_DIR)/$(MAIN_PKG)/Worksheet.class $(BUILD_DIR)/$(MAIN_PKG)/CellController.class $(SRC_DIR)/$(MAIN_PKG)/WindowController.java $(BUILD_DIR)/$(MAIN_PKG)/WindowView.class $(BUILD_DIR)/$(MAIN_PKG)/Cell.class
 	$(JC) $(JCFLAGS) $(SRC_DIR)/$(MAIN_PKG)/WorksheetController.java $(SRC_DIR)/$(MAIN_PKG)/WindowController.java
 
-$(BUILD_DIR)/$(MAIN_PKG)/Worksheet.class: $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java $(SRC_DIR)/$(MAIN_PKG)/Cell.java
+$(BUILD_DIR)/$(MAIN_PKG)/Worksheet.class: $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java $(SRC_DIR)/$(MAIN_PKG)/Cell.java $(SRC_DIR)/$(MAIN_PKG)/CellView.java $(SRC_DIR)/$(MAIN_PKG)/ReferenceTreeNode.java $(BUILD_DIR)/$(MAIN_PKG)/TreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/IncorrectFormulaException.class $(BUILD_DIR)/$(MAIN_PKG)/IncalculableFormulaException.class $(BUILD_DIR)/$(MAIN_PKG)/FormulaParser.class
 	$(JC) $(JCFLAGS) $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java $(SRC_DIR)/$(MAIN_PKG)/Cell.java $(SRC_DIR)/$(MAIN_PKG)/CellView.java $(SRC_DIR)/$(MAIN_PKG)/ReferenceTreeNode.java $(SRC_DIR)/$(MAIN_PKG)/FormulaParser.java
 
 $(BUILD_DIR)/$(MAIN_PKG)/CellController.class: $(SRC_DIR)/$(MAIN_PKG)/CellController.java $(BUILD_DIR)/$(MAIN_PKG)/CellView.class $(BUILD_DIR)/$(MAIN_PKG)/Cell.class
@@ -61,7 +61,7 @@ $(BUILD_DIR)/$(MAIN_PKG)/TreeNode.class: $(SRC_DIR)/$(MAIN_PKG)/TreeNode.java $(
 	$(JC) $(JCFLAGS) $<
 
 $(BUILD_DIR)/$(MAIN_PKG)/ReferenceTreeNode.class: $(SRC_DIR)/$(MAIN_PKG)/ReferenceTreeNode.java $(BUILD_DIR)/$(MAIN_PKG)/TreeNode.class $(SRC_DIR)/$(MAIN_PKG)/Cell.java $(BUILD_DIR)/$(MAIN_PKG)/IncalculableFormulaException.class
-	$(JC) $(JCFLAGS) $(SRC_DIR)/$(MAIN_PKG)/ReferenceTreeNode.java $(SRC_DIR)/$(MAIN_PKG)/Cell.java
+	$(JC) $(JCFLAGS) $(SRC_DIR)/$(MAIN_PKG)/ReferenceTreeNode.java $(SRC_DIR)/$(MAIN_PKG)/Cell.java $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java $(SRC_DIR)/$(MAIN_PKG)/CellView.java $(SRC_DIR)/$(MAIN_PKG)/FormulaParser.java
 
 $(BUILD_DIR)/$(MAIN_PKG)/IncorrectFormulaException.class: $(SRC_DIR)/$(MAIN_PKG)/IncorrectFormulaException.java
 	$(JC) $(JCFLAGS) $<
@@ -75,7 +75,7 @@ $(BUILD_DIR)/$(MAIN_PKG)/WorksheetView.class: $(SRC_DIR)/$(MAIN_PKG)/WorksheetVi
 $(BUILD_DIR)/$(MAIN_PKG)/FormulaParser.class: $(SRC_DIR)/$(MAIN_PKG)/FormulaParser.java $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java $(BUILD_DIR)/$(MAIN_PKG)/IncorrectFormulaException.class $(BUILD_DIR)/$(MAIN_PKG)/NumberTreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/TreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/AdditionTreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/SubtractionTreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/MultiplicationTreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/DivisionTreeNode.class $(BUILD_DIR)/$(MAIN_PKG)/ReferenceTreeNode.class
 	$(JC) $(JCFLAGS) $(SRC_DIR)/$(MAIN_PKG)/FormulaParser.java $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java $(SRC_DIR)/$(MAIN_PKG)/Cell.java
 
-$(BUILD_DIR)/$(MAIN_PKG)/AdditionTreeNode.class: $(SRC_DIR)/$(MAIN_PKG)/Worksheet.java
+$(BUILD_DIR)/$(MAIN_PKG)/AdditionTreeNode.class: $(SRC_DIR)/$(MAIN_PKG)/AdditionTreeNode.java
 	$(JC) $(JCFLAGS) $<
 
 $(BUILD_DIR)/$(MAIN_PKG)/SubtractionTreeNode.class: $(SRC_DIR)/$(MAIN_PKG)/SubtractionTreeNode.java

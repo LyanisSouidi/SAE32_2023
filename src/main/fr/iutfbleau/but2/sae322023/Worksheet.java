@@ -39,7 +39,8 @@ public class Worksheet {
 
     /**
      * Get the cells of the worksheet.
-     * 
+     *
+     * @param cellName the name of the cell.
      * @return the cells of the worksheet.
      */
     public Cell get(String cellName) {

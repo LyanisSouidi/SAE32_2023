@@ -52,7 +52,8 @@ public class Cell extends Observable implements Observer {
 
     /**
      * Constructor of the class.
-     * 
+     *
+     * @param worksheet the worksheet of the cell.
      * @param location the location of the cell in the worksheet.
      */
     public Cell(Worksheet worksheet, String location) {
