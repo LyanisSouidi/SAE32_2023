@@ -2,9 +2,25 @@ import java.awt.*;
 import java.util.Map;
 import javax.swing.*;
 
+/**
+ * The <code>WorksheetView</code> class represents the view of the worksheet.
+ *
+ * @version 1.0
+ * @author Tom Moguljak
+ * @author Hugo Dimitrijevic
+ * @author Lyanis Souidi
+ */
 public class WorksheetView extends JPanel {
+    /**
+     * The map of the cells controllers.
+     */
     private Map<String, CellController> cellsControllersMap;
 
+    /**
+     * Constructor of the class.
+     *
+     * @param cellsControllersMap the map of the cells controllers
+     */
     public WorksheetView(Map<String, CellController> cellsControllersMap) {
         super(new BorderLayout());
         this.cellsControllersMap = cellsControllersMap;

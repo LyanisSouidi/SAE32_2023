@@ -12,6 +12,14 @@ import java.util.Stack;
  * @author Lyanis Souidi
  */
 public class FormulaParser {
+    /**
+     * Parse the content of a cell.
+     *
+     * @param worksheetContext the worksheet used to fetch cell references.
+     * @param formula          the content of the cell.
+     * @return the root node of the tree.
+     * @throws IncorrectFormulaException if the formula is incorrect.
+     */
     public static TreeNode parse(Worksheet worksheetContext, String formula) throws IncorrectFormulaException {
         if (formula.isBlank()) return new NumberTreeNode(0);
 

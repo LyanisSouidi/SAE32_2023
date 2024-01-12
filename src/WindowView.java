@@ -1,7 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The <code>WindowView</code> class represents the main window view.
+ *
+ * @version 1.0
+ * @author Tom Moguljak
+ * @author Hugo Dimitrijevic
+ * @author Lyanis Souidi
+ */
 public class WindowView extends JFrame {
+    /**
+     * Constructor of the class
+     * @param calcul The text field where the user will enter the formula
+     */
     public WindowView(JTextField calcul) {
         super();
         this.setTitle("SAE 32_2023");
