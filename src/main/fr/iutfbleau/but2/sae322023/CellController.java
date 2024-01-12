@@ -11,6 +11,7 @@ import java.util.*;
  * @author Hugo Dimitrijevic
  * @author Lyanis Souidi
  */
+@SuppressWarnings("deprecation")
 public class CellController extends Observable implements MouseListener {
     /**
      * The view of the cell.

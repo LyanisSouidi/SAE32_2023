@@ -14,6 +14,7 @@ import javax.swing.*;
  * @author Hugo Dimitrijevic
  * @author Lyanis Souidi
  */
+@SuppressWarnings("deprecation")
 public class WindowController implements KeyListener, Observer {
     /**
      * The main window view.

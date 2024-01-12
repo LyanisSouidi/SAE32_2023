@@ -13,6 +13,7 @@ import java.util.Observer;
  * @author Hugo Dimitrijevic
  * @author Lyanis Souidi
  */
+@SuppressWarnings("deprecation")
 public class Cell extends Observable implements Observer {
     /**
      * The worksheet of the cell.
