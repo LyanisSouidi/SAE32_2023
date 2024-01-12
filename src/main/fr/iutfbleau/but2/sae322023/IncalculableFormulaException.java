@@ -1,3 +1,5 @@
+package fr.iutfbleau.but2.sae322023;
+
 /**
  * The <code>IncalculableFormulaException</code> class represents an error while evaluating a correct formula.
  * 

@@ -1,3 +1,5 @@
+package fr.iutfbleau.but2.sae322023;
+
 /**
  * The <code>IncorrectFormulaException</code> class represents an error while parsing a formula.
  * 

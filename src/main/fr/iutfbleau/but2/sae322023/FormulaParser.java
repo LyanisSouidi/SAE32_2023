@@ -1,3 +1,5 @@
+package fr.iutfbleau.but2.sae322023;
+
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.List;
