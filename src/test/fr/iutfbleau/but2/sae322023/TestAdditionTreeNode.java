@@ -1,13 +1,9 @@
-package fr.iutfbleau.fr.but2.sae322023;
+package fr.iutfbleau.but2.sae322023;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
-import fr.iutfbleau.but2.sae322023.AdditionTreeNode;
-import fr.iutfbleau.but2.sae322023.IncalculableFormulaException;
-import fr.iutfbleau.but2.sae322023.NumberTreeNode;
-import fr.iutfbleau.but2.sae322023.TreeNode;
 
 public class TestAdditionTreeNode {
     @Test(expected = IllegalArgumentException.class)

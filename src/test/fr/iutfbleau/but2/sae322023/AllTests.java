@@ -1,4 +1,4 @@
-package fr.iutfbleau.fr.but2.sae322023;
+package fr.iutfbleau.but2.sae322023;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

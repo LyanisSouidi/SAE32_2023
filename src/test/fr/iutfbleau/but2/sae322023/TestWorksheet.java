@@ -1,8 +1,7 @@
-package fr.iutfbleau.fr.but2.sae322023;
+package fr.iutfbleau.but2.sae322023;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import fr.iutfbleau.but2.sae322023.Worksheet;
 
 public class TestWorksheet {
     @Test
