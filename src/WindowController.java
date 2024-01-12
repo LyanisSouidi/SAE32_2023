@@ -56,14 +56,15 @@ public class WindowController implements KeyListener, Observer {
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyChar() == '\n') {
+            if (this.lastCellController == null) return;
             this.lastCellController.getModel().setRawContent(this.calcul.getText());
             this.lastCellController.getView().update();
         }
     }
 
     /**
-     * Method called by the cells when they are selected
-     * .
+     * Method called by the cells when they are selected.
+     *
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers} method.
      */

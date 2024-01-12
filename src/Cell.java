@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * The <code>Cell</code> class represents a cell in a worksheet.
@@ -9,7 +11,7 @@ import java.util.List;
  * @author Hugo Dimitrijevic
  * @author Lyanis Souidi
  */
-public class Cell {
+public class Cell extends Observable implements Observer {
     /**
      * The worksheet of the cell.
      */
@@ -66,20 +68,37 @@ public class Cell {
      * @param rawContent the content of the cell.
      */
     public void setRawContent(String rawContent) {
+        if (rawContent.equals(this.rawContent)) return;
         this.rawContent = rawContent;
+
+
+        List<TreeNode> nodes = new ArrayList<TreeNode>();
+        if (this.rootNode != null) {
+            nodes.add(this.rootNode);
+            nodes.addAll(this.rootNode.getChilds());
+            for (TreeNode node : nodes) {
+                if (node instanceof ReferenceTreeNode) this.deleteObserver(((ReferenceTreeNode) node).getCell());
+            }
+        }
+
         try {
             this.rootNode = FormulaParser.parse(this.getWorksheet(), rawContent);
             this.formulaIsCorrect = true;
+
+            this.setChanged();
+            this.notifyObservers();
+
             this.dependencies.clear();
 
-            List<TreeNode> nodes = new ArrayList<TreeNode>();
-
+            nodes.clear();
             nodes.add(this.rootNode);
             nodes.addAll(this.rootNode.getChilds());
 
             for (TreeNode node : nodes) {
                 if (node instanceof ReferenceTreeNode) {
-                    this.dependencies.add(((ReferenceTreeNode) node).getCell());
+                    Cell refCell = ((ReferenceTreeNode) node).getCell();
+                    this.dependencies.add(refCell);
+                    refCell.addObserver(this);
                 }
             }
         } catch (IncorrectFormulaException e) {
@@ -176,5 +195,16 @@ public class Cell {
      */
     public void setView(CellView view) {
         this.view = view;
+    }
+
+    /**
+     * Method called whenever a dependency's formula is changed.
+     *
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers} method.
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        this.view.update();
     }
 }
